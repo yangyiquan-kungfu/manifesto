@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YANGYIQUAN FA | Tactical Manifesto</title>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Ma+Shan+Zheng&family=Montserrat:wght@300;400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #0a0a0a;
+            --tactical-red: #8b0000;
+            --matte-gold: #c5a059;
+            --slate-gray: #1a1a1a;
+            --text-silver: #e0e0e0;
+            --font-main: 'Montserrat', sans-serif;
+            --font-display: 'Cinzel', serif;
+            --font-brush: 'Ma Shan Zheng', cursive;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-silver);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- UI Components --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80') center/cover;
+            border-bottom: 2px solid var(--tactical-red);
+        }
+
+        .calligraphy-hero {
+            font-family: var(--font-brush);
+            color: var(--matte-gold);
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
+        }
+
+        h1.title {
+            font-family: var(--font-display);
+            letter-spacing: 8px;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .tagline {
+            color: var(--tactical-red);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-top: 10px;
+        }
+
+        section {
+            padding: 80px 10%;
+            border-bottom: 1px solid #222;
+        }
+
+        h2.section-title {
+            font-family: var(--font-display);
+            color: var(--matte-gold);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2.section-title::after {
+            content: "";
+            height: 2px;
+            flex-grow: 1;
+            background: var(--tactical-red);
+            margin-left: 20px;
+        }
+
+        /* --- Founder Dossier --- */
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .pedigree-card {
+            background: var(--slate-gray);
+            padding: 25px;
+            border-left: 4px solid var(--tactical-red);
+            margin-bottom: 20px;
+        }
+
+        .pedigree-card h3 {
+            color: var(--matte-gold);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Knowledge Matrix --- */
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .matrix-item {
+            background: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font-display);
+        }
+
+        .matrix-item:hover {
+            background: var(--tactical-red);
+            border-color: var(--matte-gold);
+        }
+
+        .matrix-item span {
+            display: block;
+            font-family: var(--font-brush);
+            font-size: 1.5rem;
+            color: var(--matte-gold);
+        }
+
+        /* --- Media Center --- */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: 1px solid #333;
+        }
+
+        /* --- Literature Buttons --- */
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-book {
+            background: transparent;
+            border: 2px solid var(--matte-gold);
+            color: var(--matte-gold);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-weight: bold;
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+
+        .btn-book:hover {
+            background: var(--matte-gold);
+            color: black;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* --- Modal System --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--slate-gray);
+            padding: 40px;
+            max-width: 600px;
+            border: 2px solid var(--matte-gold);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px; right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--tactical-red);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #555;
+            background: #050505;
+        }
+
+        @media (max-width: 768px) {
+            .dossier-grid { grid-template-columns: 1fr; }
+            .calligraphy-hero { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="calligraphy-hero">阳意拳</div>
+        <h1 class="title">YANGYIQUAN FA</h1>
+        <p class="tagline">The Fist of the Light's Intention</p>
+    </header>
+
+    <!-- SECTION 1: THE FOUNDER -->
+    <section id="founder">
+        <h2 class="section-title">Institutional Leadership</h2>
+        <div class="dossier-grid">
+            <div>
+                <h3 style="color:white; margin-bottom:15px;">Pedro Barros <span style="color:var(--matte-gold);">(Sultan Assad Abd-Al-Ghalib)</span></h3>
+                <p>The system is lead by Head Instructor Sultan, a published scholar and tactical engineer. His evolution is defined by a trajectory from traditional mastery to modern combative science.</p>
+                <br>
+                <p>In April 2026, he formally integrated his spiritual and ethical core into Islam, marking a new chapter of tactical maturity. This sabbatical of moral refinement serves as the ethical foundation for the <strong>Yangyiquan Fa</strong>.</p>
+            </div>
+            <div class="pedigree-box">
+                <div class="pedigree-card">
+                    <h3>Karate Shukokai (Ages 12–17)</h3>
+                    <p>Formative training under Sensei Carmindo Paiva & Carlos Rodrigues. National Team experience.</p>
+                </div>
+                <div class="pedigree-card">
+                    <h3>Hapkido Mastery</h3>
+                    <p>Law Enforcement-grade instruction under Master António (Porto). Specialized in joint locks and kinetic control.</p>
+                </div>
+                <div class="pedigree-card">
+                    <h3>Kung Fu Engineering</h3>
+                    <p>Advanced study under Sifu Diogo Sant’Ana. Focused on Lo Leong Macau lineage and biomechanical efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: GLOBAL VISION (IMAS) -->
+    <section id="vision" style="background:#0c0c0c;">
+        <h2 class="section-title">IMAS Strategic Roadmap</h2>
+        <p style="max-width: 800px; margin-bottom: 30px;">The <strong>International Martial Arts Syndicate (IMAS)</strong> serves as our visionary umbrella. Currently headquartered in <strong>Granada, Spain</strong>, the association is transitioning into a global standard for security and tactical defense.</p>
+        <ul style="list-style: none;">
+            <li style="margin-bottom:15px;"><span style="color:var(--tactical-red);">[Current]</span> Elite European Self-Defense Instructor Certification.</li>
+            <li style="margin-bottom:15px;"><span style="color:var(--matte-gold);">[Future Phase]</span> Taiwan Immersion: Specialization in Shuai Jiao & Bajiquan.</li>
+            <li style="margin-bottom:15px;"><span style="color:var(--tactical-red);">[Global]</span> International accreditation and standardized security protocols.</li>
+        </ul>
+    </section>
+
+    <!-- SECTION 3: KNOWLEDGE MATRIX -->
+    <section id="matrix">
+        <h2 class="section-title">Knowledge Matrix</h2>
+        <div class="matrix-grid">
+            <div class="matrix-item" onclick="openMatrix('Fajin', 'Explosive release of kinetic energy. The total synchronization of breath, intent, and muscle to deliver structural devastation.')">
+                <span>發勁</span> Fajin
+            </div>
+            <div class="matrix-item" onclick="openMatrix('Pao', 'The Cannon Strike. A ballistic long-range strike utilizing the ground-to-fist force chain.')">
+                <span>炮</span> Pao
+            </div>
+            <div class="matrix-item" onclick="openMatrix('Dao Zhiliao', 'The synthesis of martial recovery and traditional medical knowledge (Fitoterapia).')">
+                <span>道治療</span> Dao Zhiliao
+            </div>
+            <div class="matrix-item" onclick="openMatrix('Neigong', 'Internal cultivation. Structural alignment and neurological training to sustain combat longevity.')">
+                <span>內功</span> Nei Gong
+            </div>
+            <div class="matrix-item" onclick="openMatrix('Inside Groin Kick', 'Ascending inner-line strikes. A signature biomechanical weapon of the Yangyiquan system.')">
+                <span>內陰踢</span> Ascending Kick
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: AUDIOVISUAL DOSSIER -->
+    <section id="media">
+        <h2 class="section-title">Audiovisual Materials</h2>
+        <div class="media-grid">
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/aI7MKLiloQ8" frameborder="0" allowfullscreen></iframe></div>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/HjcjX-Po7XY" frameborder="0" allowfullscreen></iframe></div>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/2FNYNQo8pe0" frameborder="0" allowfullscreen></iframe></div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://www.instagram.com/reel/DYO0Ie4MYEH/" class="btn-book" target="_blank">View System Essence (Instagram)</a>
+        </div>
+    </section>
+
+    <!-- SECTION 5: TECHNICAL LITERATURE -->
+    <section id="literature" style="text-align: center;">
+        <h2 class="section-title" style="justify-content: center;">Technical Literature</h2>
+        <p style="margin-bottom:30px;">Official published volumes by Pedro Barros (Clube de Autores).</p>
+        <div class="book-container">
+            <a href="https://clubedeautores.pt/livro/vol-1-kung-fu-yangyiquan" class="btn-book" target="_blank">Vol. 1: Kung Fu Yangyiquan</a>
+            <a href="https://clubedeautores.pt/livro/vol-2-kung-fu-yangyiquan" class="btn-book" target="_blank">Vol. 2: Kung Fu Yangyiquan</a>
+            <a href="https://clubedeautores.pt/livro/vol-3-kung-fu-yangyiquan-dao-zhiliao" class="btn-book" target="_blank">Vol. 3: Kung Fu Yangyiquan & Dao Zhiliao</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright © 2026 Yangyiquan Fa Self Defense Association | IMAS Global</p>
+        <p>Granada, Spain | Directed by Sultan Assad Abd-Al-Ghalib</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div id="matrixModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="color:var(--matte-gold); margin-bottom:15px; font-family:var(--font-display);"></h2>
+            <p id="modalBody" style="font-size:1.1rem; line-height:1.8;"></p>
+        </div>
+    </div>
+
+    <script>
+        function openMatrix(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = text;
+            document.getElementById('matrixModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('matrixModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('matrixModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
