@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yangyiquan Fa | Interactive Manifesto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0a0a; --gold: #c5a059; --red: #8b0000; --text: #e0e0e0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; text-align: center; }
+        .calligraphy { font-family: 'Zhi Mang Xing', cursive; color: var(--gold); font-size: clamp(3rem, 10vw, 6rem); margin: 20px 0; }
+        .hero-title { font-family: 'Cinzel', serif; letter-spacing: clamp(4px, 2vw, 10px); color: var(--gold); text-transform: uppercase; margin-top: -20px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .dossier-card { border: 1px solid rgba(197, 160, 89, 0.2); padding: 30px; background: rgba(255,255,255,0.02); margin-bottom: 40px; text-align: left; border-left: 4px solid var(--red); }
+        .label { color: var(--red); font-family: 'Cinzel', serif; font-weight: bold; letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; }
+        .btn-gold { display: block; padding: 18px; margin: 12px 0; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; transition: 0.3s; }
+        .btn-gold:hover { background: var(--gold); color: #000; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header style="padding: 120px 20px 60px 20px; background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);">
+        <img src="logo.png" alt="" style="width: 150px; height: auto; margin-bottom: 20px;" onerror="this.style.display='none'">
+        <p class="calligraphy">養意拳法</p>
+        <h1 class="hero-title">Yangyiquan Fa</h1>
+        <p style="letter-spacing: 4px; opacity: 0.6; font-size: 0.9rem;">THE FIST OF THE LIGHT'S INTENTION</p>
+    </header>
+
+    <div class="container">
+        <section class="dossier-card">
+            <span class="label">Institutional Architect</span>
+            <h2 style="font-family: 'Cinzel'; color: var(--gold); margin: 10px 0;">Sultan Assad Abd-Al-Ghalib</h2>
+            <p><strong>Operational Profile:</strong> Shénmì Lóng (Pedro Barros). System based on tactical biomechanics and moral refinement. Rooted in Granada, Spain.</p>
+        </section>
+
+        <span class="label">Technical Literature</span>
+        <div style="margin: 20px 0;">
+            <a href="https://clubedeautores.pt/livro/vol-1-kung-fu-yangyiquan" class="btn-gold" target="_blank">VOL. 1: KUNG FU YANGYIQUAN</a>
+            <a href="https://clubedeautores.pt/livro/vol-2-kung-fu-yangyiquan" class="btn-gold" target="_blank">VOL. 2: KUNG FU YANGYIQUAN</a>
+            <a href="https://clubedeautores.pt/livro/vol-3-kung-fu-yangyiquan-dao-zhiliao" class="btn-gold" target="_blank">VOL. 3: KUNG FU YANGYIQUAN & DAO ZHILIAO</a>
+        </div>
+
+        <span class="label">Tactical Video Archive</span>
+        <div class="video-grid">
+            <a href="https://youtu.be/aI7MKLiloQ8" class="btn-gold" target="_blank">🛡️ DEFENSIVE ARSENAL</a>
+            <a href="https://youtube.com/shorts/Ii6J7uD_iMI" class="btn-gold" target="_blank">🦶 KICKING MECHANICS</a>
+            <a href="https://youtu.be/HjcjX-Po7XY" class="btn-gold" target="_blank">💥 IMPACT CONDITIONING</a>
+            <a href="https://youtu.be/vU92MrxgyCE" class="btn-gold" target="_blank">📚 PEDAGOGY</a>
+        </div>
+    </div>
+
+    <footer style="padding: 80px 20px; border-top: 1px solid rgba(139, 0, 0, 0.3); margin-top: 100px; opacity: 0.5;">
+        <p>IMAS - INTERNATIONAL MARTIAL ARTS SYNDICATE | 2026</p>
+    </footer>
+
+</body>
+</html>
+
